@@ -75,7 +75,7 @@ function AppContent() {
   const startTimeRef = useRef(Date.now())
 
   useEffect(() => {
-    if (!location.pathname.startsWith('/__admin')) {
+    if (!location.pathname.startsWith('/__admin') && !location.pathname.startsWith('/admin')) {
       trackAppLoad()
       startTimeRef.current = Date.now()
     }
@@ -99,6 +99,7 @@ function App() {
         <AppContent />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/admin/analytics" element={<AdminAnalytics />} />
           <Route path="/__admin/analytics" element={<AdminAnalytics />} />
           <Route path="/focus-grid" element={<GameRoute Component={FocusGrid} />} />
           <Route path="/memory-refresh" element={<GameRoute Component={MemoryRefresh} />} />
